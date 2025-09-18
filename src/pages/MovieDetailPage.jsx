@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import {useParams, Link} from "react-router-dom"
-const API_KEY = import.meta.env.VITE_OMDB_API_KEY;;
+//const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+const API_KEY = '268c45d0';
+
 
 export default function MovieDetailPage(){
     const { id }= useParams(); // Id film ro az url stekhraj mikone.
@@ -59,7 +61,7 @@ export default function MovieDetailPage(){
     return(
         <>
         {/*        ساختار کلی صفحه و کانتینر */}
-        <div className="min-h-screen p-4 font-sans bg-background text-text-main sm:p-8">
+        <div className="font-sans bgp-4 bgmin-h-screen text-text-main sm:p-8 bg-background"> 
             {/* کانتینر محتوای اصلی */}
             <div className="max-w-4xl mx-auto">
                 {/* چیدمان دو ستونه یک سمت اطلاعات فیلم و سمت دیگر پوستر فیلم */}
@@ -72,7 +74,7 @@ export default function MovieDetailPage(){
                         </div>
                         {/* اطلاعات فیلم*/}
                         <div className="md:col-span-2">
-                            <h1 className="mb-2 text-4xl font-bold text-white">
+                            <h1 className="mb-2 text-4xl font-bold text-text-main">
                                 {details.Title}
                                 <span className="text-2xl font-normal text-text-secondary">{details.Year}</span>
                             </h1>

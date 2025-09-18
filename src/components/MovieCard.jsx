@@ -2,7 +2,8 @@ import { useState } from "react";
 
 // بهتر است API_KEY را در یک فایل جداگانه یا متغیرهای محیطی قرار دهیم،
 // اما برای این تمرین اینجا مشکلی ندارد.
-const API_KEY = import.meta.env.VITE_OMDB_API_KEY;;
+//const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+const API_KEY = '268c45d0';
 
 export default function MovieCard({ movie }) {
   const [details, setDetails] = useState(null);
