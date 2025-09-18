@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // بهتر است API_KEY را در یک فایل جداگانه یا متغیرهای محیطی قرار دهیم،
 // اما برای این تمرین اینجا مشکلی ندارد.
-const API_KEY = "268c45d0";
+const API_KEY = import.meta.env.VITE_OMDB_API_KEY;;
 
 export default function MovieCard({ movie }) {
   const [details, setDetails] = useState(null);
@@ -31,7 +31,7 @@ export default function MovieCard({ movie }) {
     <div
       onMouseEnter={fetchDetails}
       // کلاس key باید روی بالاترین عنصر در حلقه map باشد، نه اینجا
-      className="group relative bg-card rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-primary/40"
+      className="relative overflow-hidden transition-all duration-300 ease-in-out rounded-lg shadow-lg group bg-card hover:shadow-primary/40"
     >
       <img
         src={
@@ -40,20 +40,20 @@ export default function MovieCard({ movie }) {
             : "https://via.placeholder.com/300x444.png?text=No+Image"
         }
         alt={movie.Title}
-        className="w-full h-96 object-cover"
+        className="object-cover w-full h-96"
       />
 
       {/* لایه شناور */}
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+      <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center transition-opacity duration-300 ease-in-out opacity-0 bg-black/80 backdrop-blur-sm group-hover:opacity-100">
         {/* ۱. تمام منطق نمایش به داخل لایه شناور منتقل شد */}
         {isFetchingDetails && <p className="text-white animate-pulse">در حال دریافت اطلاعات...</p>}
         
         {details && (
           <>
-            <h4 className="text-lg font-bold text-white mb-2">{details.Title}</h4>
-            <p className="text-xs text-slate-300 mb-4">{details.Plot}</p>
+            <h4 className="mb-2 text-lg font-bold text-white">{details.Title}</h4>
+            <p className="mb-4 text-xs text-slate-300">{details.Plot}</p>
             {/* ۲. ساختار نمایش جزئیات تمیزتر و بهینه‌تر شد */}
-            <div className="text-sm text-left w-full text-slate-200">
+            <div className="w-full text-sm text-left text-slate-200">
               <p><span className="font-semibold">کارگردان: </span>{details.Director}</p>
               <p><span className="font-semibold">بازیگران: </span>{details.Actors}</p>
               <p><span className="font-semibold">امتیاز IMDb: </span>{details.imdbRating} ⭐</p>
@@ -64,8 +64,8 @@ export default function MovieCard({ movie }) {
 
       {/* عنوان پایینی */}
       <div className="p-4 transition-opacity duration-300 group-hover:opacity-0">
-        <h3 className="font-bold text-lg truncate text-text-main">{movie.Title}</h3>
-        <p className="text-sm text-text-secondary mt-1">{movie.Year}</p>
+        <h3 className="text-lg font-bold truncate text-text-main">{movie.Title}</h3>
+        <p className="mt-1 text-sm text-text-secondary">{movie.Year}</p>
       </div>
     </div>
   );
