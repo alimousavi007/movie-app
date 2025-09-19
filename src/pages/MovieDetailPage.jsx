@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import {useParams, Link} from "react-router-dom"
-//const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
-const API_KEY = '268c45d0';
+const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
 
 export default function MovieDetailPage(){
